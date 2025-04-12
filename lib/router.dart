@@ -1,4 +1,4 @@
-import 'package:btvn/pages/home.dart';
+import 'package:btvn/Screen/home.dart';
 import 'package:fluro/fluro.dart';
 import 'package:btvn/pages/onboarding/onboarding1.dart';
 import 'package:btvn/pages/onboarding/onboarding2.dart';
@@ -16,12 +16,14 @@ import 'package:btvn/pages/forgot_password/new_password.dart';
 import 'package:btvn/pages/forgot_password/password_change.dart';
 import 'package:btvn/pages/forgot_password/verification_code_email.dart';
 import 'package:btvn/pages/forgot_password/verification_code_phone.dart';
+import 'package:btvn/Screen/screen_vendors.dart';
+import 'package:btvn/Screen/home.dart';
 
 class FluroRouterConfig {
   static final FluroRouter router = FluroRouter();
 
   static final Handler _homeHandler = Handler(
-    handlerFunc: (context, params) => HomePage(),
+    handlerFunc: (context, params) => HomeScreen(),
   );
 
   static final Handler _onboarding1Handler = Handler(
@@ -89,8 +91,14 @@ class FluroRouterConfig {
   );
 
 
+
+  static final Handler _vendors = Handler(
+    handlerFunc: (context, params) => VendorScreen(),
+  );
+
   static void setupRouter() {
     router.define("/home", handler: _homeHandler);
+    router.define("/vendors", handler: _vendors);
     router.define("/", handler: _onboarding1Handler);
     router.define("/onboarding2", handler: _onboarding2Handler);
     router.define("/onboarding3", handler: _onboarding3Handler);
